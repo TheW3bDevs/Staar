@@ -90,8 +90,8 @@ app.post("/postMail", async (req, res) => {
   };
 
   const mailOptions2 = {
-    from: "Sai@1234567",
-    to: user.email,
+    from: "Staar Exports And Imports",
+    to: user.User.email,
     subject: "Order Details",
     html: `
     <div
