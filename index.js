@@ -147,25 +147,35 @@ app.post("/postMail", async (req, res) => {
     `,
   };
 
+  let c=0;
+
   transporter.sendMail(mailOptions2, (error, info) => {
     if (error) {
     
       console.log("Error sending email:", error);
     } else {
-  
-      console.log("Email sent:", info.response);
+        c++;
+      console.log("user Email sent:", info.response);
     }
   });
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      res.json({ status: "Failed to send" });
+     
+    
       console.log("Error sending email:", error);
     } else {
-      res.json({ status: "Mail sent Successful" });
-      console.log("Email sent:", info.response);
+       c++;
+  
+      console.log("owner Email sent:", info.response);
     }
+    
   });
+  if (c==2){
+     res.json({ status: "Mail sent Successful" });
+  }else{
+      res.json({ status: "Failed to send" });
+  }
 });
 
 app.listen(PORT, () => console.log("server started "));
