@@ -147,12 +147,12 @@ app.post("/postMail", async (req, res) => {
     `,
   };
 
-  transporter.sendMail(mailOption2, (error, info) => {
+  transporter.sendMail(mailOptions2, (error, info) => {
     if (error) {
-      res.json({ status: "Failed to send" });
+    
       console.log("Error sending email:", error);
     } else {
-      res.json({ status: "Mail sent Successful" });
+  
       console.log("Email sent:", info.response);
     }
   });
