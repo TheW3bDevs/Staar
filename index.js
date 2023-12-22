@@ -15,36 +15,8 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 app.post("/postMail", async (req, res) => {
-  // let user = req.body;
-  let user = {
-    Items: [
-      {
-        productImg:
-          "https://5.imimg.com/data5/KM/BJ/MY-13701092/sona-masoori-rice.jpg",
-        productName: "Sona Masoori Rice ",
-        quantity: 6,
-      },
-      {
-        productImg:
-          "https://rukminim2.flixcart.com/image/850/1000/xif0q/rice/e/f/t/10-idli-white-raw-pouch-raw-rice-nupsila-medium-grain-original-imagr86kdmjxhm8z.jpeg?q=20",
-        productName: "Idly Rice",
-        quantity: 5,
-      },
-      {
-        productImg:
-          "https://cdn.dotpe.in/longtail/store-items/5739802/IVRfVrqX.jpeg",
-        productName: "Ragi Flour",
-        quantity: 5,
-      },
-    ],
-    User: {
-      firstName: "Durga ",
-      lastName: "Prasad",
-      email: "prasaddurga2031@gmail.com",
-      phoneNo: "+919177943677",
-      address: "1-42, Velamapeta, Pasalapudi",
-    },
-  };
+  let user = req.body;
+
   console.log(req.body);
   const transporter = nodemailer.createTransport(
     smtpTransport({
