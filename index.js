@@ -33,7 +33,7 @@ app.post("/postMail", async (req, res) => {
 
   const mailOptions = {
     from: "Sai@1234567",
-    to: "staarfoods.com@gmail.com",
+    to: "office.staareximindialtd@gmail.com",
     subject: "Order Details",
     html: `
     <div
