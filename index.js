@@ -155,8 +155,9 @@ app.post("/postMail", async (req, res) => {
       port: 465,
       secure: true,
       auth: {
-        user: "saidurga4c3@gmail.com",
-        pass: "ukjb odgx mjsa kuyy",
+        user: "staarfoods.com@gmail.com",
+        // pass: "ukjb odgx mjsa kuy",
+        pass:"yezp fkzm wgvv fulq",
       },
     })
   );
