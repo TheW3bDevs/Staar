@@ -163,7 +163,7 @@ app.post("/postMail", async (req, res) => {
   );
 
   const mailOptions = {
-    from: "Sai@1234567",
+    from: "StaarFoods",
     to: "staarfoods.com@gmail.com",
     subject: "Order Details",
     html: `
@@ -221,7 +221,7 @@ app.post("/postMail", async (req, res) => {
   };
 
   const mailOptions2 = {
-    from: "Staar Exports And Imports",
+    from: "admin@staarfoods",
     to: user.User.email,
     subject: "Order Details",
     html: `
