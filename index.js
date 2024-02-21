@@ -14,21 +14,20 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
-
 //-------------Creating Transporter-------------
 const transporter = nodemailer.createTransport(
-    smtpTransport({
-      service: "Gmail",
-      host: "smtp.gmail.com",
-      port: 465,
-      secure: true,
-      auth: {
-        user: "staarfoods.com@gmail.com",
-        // pass: "ukjb odgx mjsa kuy",
-        pass:"yezp fkzm wgvv fulq",
-      },
-    })
-  );
+  smtpTransport({
+    service: "Gmail",
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
+    auth: {
+      user: "staarfoods.com@gmail.com",
+      // pass: "ukjb odgx mjsa kuy",
+      pass: "yezp fkzm wgvv fulq",
+    },
+  })
+);
 
 //----------------Creating promise to executing message
 function sendEmail(mailOptions) {
@@ -44,7 +43,6 @@ function sendEmail(mailOptions) {
     });
   });
 }
-
 
 //-----------------------------Quote Form Mail-
 app.post("/postCart", async (req, res) => {
@@ -434,6 +432,26 @@ app.post("/postContact", (req, res) => {
       res.json({ status: "Failed to send" });
     }
   }
+});
+
+app.post("/portifolioEmail", async (req, res) => {
+  const { email, name, website, message } = req.body;
+  const mailOptions = {
+    from: `${email}`,
+    to: "nmvmanikanta@gmail.com",
+    subject: `Recieved A Mail from ${name}`,
+    html: `<p>${message}</p><p>Sender Website ${website}</p>`,
+  };
+
+  await sendEmail(mailOptions)
+    .then((response) => {
+      res
+        .status(200)
+        .json({ msg: "Email Sent Sucessfully and we will reach out to you" });
+    })
+    .catch((err) => {
+      res.status(400).json({ err: "something went wrong" });
+    });
 });
 
 app.listen(PORT, () => console.log("server started "));
